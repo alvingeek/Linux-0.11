@@ -18,8 +18,8 @@ pg_dir:
 startup_32:
 	movl $0x10,%eax		
 	mov %ax,%ds		#ds=0x10, es=0x10, fs=0x10, gs=0x10;
-	mov %ax,%es		#原先实模式下的各个段寄存器作为保护模式下的段选择器.T1=0,指向GDT,
-	mov %ax,%gs
+	mov %ax,%es		#原先实模式下的各个段寄存器作为保护模式下的段选择器.0b00010000, T1=0,指向GDT, 索引号=2,指向GDT第二项
+	mov %ax,%gs		
 	lss stack_start,%esp
 	call setup_idt
 	call setup_gdt
